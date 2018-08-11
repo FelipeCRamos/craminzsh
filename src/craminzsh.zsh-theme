@@ -1,20 +1,17 @@
 # The prompt
+# PROMPT='$(_user_host)$(_python_venv)%{$fg[cyan]%}%c $(git_prompt_info)%{$reset_color%}$(_git_time_since_commit)$(git_prompt_status)${_return_status}➜ '
 PROMPT='$(_user_host)[%B%{$fg[grey]%}%c%{$reset_color%}] %{$reset_color%}$(_git_time_since_commit)${_return_status}%B%{$fg[grey]%}$%b '
-
-# Right prompt
 RPROMPT='$(git_prompt_info) $(git_prompt_status)'
 
 # Prompt with SHA
 # PROMPT='$(_user_host)$(_python_venv)%{$fg[cyan]%}%c $(git_prompt_info)%{$reset_color%}$(git_prompt_short_sha)%{$fg[magenta]%}$(_git_time_since_commit)$(git_prompt_status)${_return_status}➜ '
 
-# Return status (`!` if the program runs returns 1)
 local _return_status="%{$fg[red]%}%(?..! )%{$reset_color%}"
 
 function _user_host() {
   if [[ $(who am i) =~ \([-a-zA-Z0-9\.]+\) ]]; then
-    # if you want the machine name too (ex: felipecramos@machine)
     # me="%n@%m"
-    me="%n"
+    me="%n @ %B%{$fg[grey]%}%m%b%{$reset_color%}"
   elif [[ logname != $USER ]]; then
     me="%n"
   fi
@@ -90,6 +87,8 @@ function _git_time_since_commit() {
     else
         COLOR="$ZSH_THEME_GIT_TIME_SINCE_COMMIT_NEUTRAL"
     fi
+
+
     echo "$COLOR$commit_age%{$reset_color%}"
   fi
 }
