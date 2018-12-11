@@ -4,14 +4,12 @@
 A minimal zsh interface, with support to github plugins.
 
 #### INSTALL
-You can do it by the lazy way by cloning the repo on any place with `git clone [link]` and then typing inside your `zsh` shell:
+You can type the following command anywhere on terminal:
 ```sh
-cd craminzsh;
-zsh src/install.sh
+git clone https://github.com/FelipeCRamos/craminzsh && cp craminzsh/src/craminzsh.zsh-theme $ZSH_CUSTOM/themes/. && rm -rf craminzsh
 # it should copy the theme file to the correct directory
 ```
-
-Or, doing by the normal way, just copy the `craminzsh.zsh-theme` to the `$ZSH_CUSTOM/themes` folder and edit on your `.zshrc` with:
+And then, set the theme on your `~/.zshrc` config file.
 ```sh
 ZSH_THEME="craminzsh"
 ```
